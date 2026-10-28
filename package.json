@@ -1,0 +1,56 @@
+{
+  "name": "comet-vscode",
+  "displayName": "Comet Tools",
+  "description": "Editor tools for the Comet repositories: a formatter for Angular templates and TypeScript that follows the repository's oxlint rules and conventions.",
+  "version": "0.1.0",
+  "publisher": "vokilam",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vokilam-d/comet-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:typescript"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Comet",
+      "properties": {
+        "comet.format.enable": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Format HTML templates and TypeScript files when Comet is the default formatter."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "package": "vsce package --no-dependencies",
+    "vscode:prepublish": "node esbuild.mjs --production"
+  },
+  "devDependencies": {
+    "@angular/compiler": "22.2.3",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "@types/node": "22.19.11",
+    "@types/vscode": "1.100.0",
+    "@typescript-eslint/parser": "8.72.1",
+    "@vscode/vsce": "4.0.0",
+    "esbuild": "0.28.2",
+    "eslint": "9.39.2",
+    "typescript": "6.0.3",
+    "vitest": "4.1.12"
+  }
+}

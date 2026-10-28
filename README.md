@@ -36,7 +36,7 @@ Errors and refusals go to the **Comet** output channel (a log channel), with a s
 **HTML** (`docs/conventions/html-formatting.md`):
 
 - one attribute stays on the tag line, two or more go one per line at +2, with `>` aligned to `<`;
-- attributes listed in `inlineAttributes` (default `for`) do not count towards that limit;
+- attributes listed in `inlineAttributes` (default `for`, `id` and `aria-*`; a trailing `*` matches a prefix) do not count towards that limit;
 - content at +2 inside elements and `@if` / `@for` / `@switch` blocks, closing tags aligned to opening ones;
 - content of a split tag starts on its own line;
 - empty components self-close (`<cmt-foo />`);
@@ -67,7 +67,7 @@ A change to any of these files is picked up without a reload.
 {
   "indent": 2,
   "printWidth": 120,
-  "inlineAttributes": ["for"],
+  "inlineAttributes": ["for", "id", "aria-*"],
   "stylistic": {
     "@stylistic/quotes": ["error", "single", { "avoidEscape": true }]
   }

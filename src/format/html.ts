@@ -127,6 +127,12 @@ class Printer {
     return rawSplit(node.sourceSpan.toString());
   }
 
+  private isInlineAttribute(name: string): boolean {
+    return this.inlineAttributes.some(pattern => (
+      pattern.endsWith('*') ? name.startsWith(pattern.slice(0, -1)) : name === pattern
+    ));
+  }
+
   private element(el: Element): string[] {
     if (VERBATIM_ELEMENTS.has(el.name)) {
       return rawSplit(el.sourceSpan.toString());
@@ -137,7 +143,7 @@ class Printer {
     const selfClose = el.isSelfClosing || (empty && (name.includes('-') || SELF_CLOSING.has(name)));
 
     const attrs = el.attrs.map(attr => attr.sourceSpan.toString());
-    const counted = el.attrs.filter(attr => !this.inlineAttributes.includes(attr.name)).length;
+    const counted = el.attrs.filter(attr => !this.isInlineAttribute(attr.name)).length;
     const verbatimTag = el.comments.length > 0 || el.directives.length > 0;
     const multiAttr = !verbatimTag && counted >= 2;
 

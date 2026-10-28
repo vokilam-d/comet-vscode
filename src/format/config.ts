@@ -5,7 +5,7 @@ import ts from 'typescript';
 export interface FormatConfig {
   indent: number;
   printWidth: number;
-  /** Attributes left out of the "two or more attributes go one per line" count. */
+  /** Attributes left out of the "two or more attributes go one per line" count; a trailing `*` matches a prefix. */
   inlineAttributes: string[];
   /** `@stylistic/*` rules in ESLint form, keyed by full rule name. */
   stylistic: Record<string, unknown>;
@@ -24,7 +24,7 @@ const formatterRules: Record<string, unknown> = {
 export const defaultConfig: FormatConfig = {
   indent: 2,
   printWidth: 120,
-  inlineAttributes: ['for'],
+  inlineAttributes: ['for', 'id', 'aria-*'],
   stylistic: {
     '@stylistic/max-len': ['error', { code: 120, ignoreStrings: true, ignoreTemplateLiterals: true, ignoreComments: true }],
     '@stylistic/array-bracket-newline': ['error', 'consistent'],

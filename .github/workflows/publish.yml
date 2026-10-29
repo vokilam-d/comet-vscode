@@ -23,4 +23,5 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
+      - run: npx @vscode/vsce --version
       - run: npx @vscode/vsce publish --no-dependencies --oidc

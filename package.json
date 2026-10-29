@@ -2,7 +2,7 @@
   "name": "comet-vscode",
   "displayName": "Comet Tools",
   "description": "Editor tools for the Comet repositories: a formatter for Angular templates and TypeScript that follows the repository's oxlint rules and conventions.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "vokilam",
   "license": "UNLICENSED",
   "repository": {

@@ -3,7 +3,7 @@
 Publishing runs from `.github/workflows/publish.yml` using Marketplace trusted publishing (no PAT).
 
 1. Raise `"version"` in `package.json` and commit.
-2. Tag and push: `git tag v<version> && git push origin main v<version>`.
+2. Tag and push: `v="v$(npm pkg get version | tr -d '"')" && git tag "$v" && git push origin main "$v"`
 3. The workflow type-checks, tests and runs `vsce publish --oidc`.
 
 The workflow can also be started by hand from the Actions tab.

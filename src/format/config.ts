@@ -24,7 +24,7 @@ const formatterRules: Record<string, unknown> = {
 export const defaultConfig: FormatConfig = {
   indent: 2,
   printWidth: 120,
-  inlineAttributes: ['for', 'id', 'aria-*'],
+  inlineAttributes: ['for', 'id', 'aria-*', 'role'],
   stylistic: {
     '@stylistic/max-len': ['error', { code: 120, ignoreStrings: true, ignoreTemplateLiterals: true, ignoreComments: true }],
     '@stylistic/array-bracket-newline': ['error', 'consistent'],
